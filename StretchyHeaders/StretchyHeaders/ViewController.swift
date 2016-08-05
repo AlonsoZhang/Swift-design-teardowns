@@ -9,10 +9,12 @@
 import UIKit
 
 private let kTableHeaderHeight: CGFloat = 300.0
+private let kTableHeaderCutAway: CGFloat = 80.0
 
 class ViewController: UITableViewController {
 
     var headerView: UIView!
+    var headerMaskLayer: CAShapeLayer!
     
     let items = [
         NewsItem(category: .World, summary: "Climate change protests, divestments meet fossil fuels realities"),
@@ -36,25 +38,57 @@ class ViewController: UITableViewController {
         
         tableView.addSubview(headerView)
         
-        tableView.contentInset = UIEdgeInsets(top: kTableHeaderHeight, left: 0, bottom: 0, right: 0)
-        tableView.contentOffset = CGPoint(x: 0, y: -kTableHeaderHeight)
+        let effectiveHeight = kTableHeaderHeight-kTableHeaderCutAway/2
+        tableView.contentInset = UIEdgeInsets(top: effectiveHeight, left: 0, bottom: 0, right: 0)
+        tableView.contentOffset = CGPoint(x: 0, y: -effectiveHeight)
+        
+        headerMaskLayer = CAShapeLayer()
+        headerMaskLayer.fillColor = UIColor.blackColor().CGColor
+        
+        headerView.layer.mask = headerMaskLayer
         updateHeaderView()
     }
     
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        updateHeaderView()
+    }
+    
+    override func viewWillTransitionToSize(size: CGSize, withTransitionCoordinator coordinator: UIViewControllerTransitionCoordinator) {
+        coordinator.animateAlongsideTransition({ (context) -> Void in
+            [self]
+            self.updateHeaderView()
+            self.tableView.reloadData()
+            }, completion: { (context) -> Void in
+        })
+    }
+    
     func updateHeaderView() {
-        var headerRect = CGRect(x: 0, y: -kTableHeaderHeight, width: tableView.bounds.width, height: kTableHeaderHeight)
-        if tableView.contentOffset.y < -kTableHeaderHeight {
+        let effectiveHeight = kTableHeaderHeight-kTableHeaderCutAway/2
+        var headerRect = CGRect(x: 0, y: -effectiveHeight, width: tableView.bounds.width, height: kTableHeaderHeight)
+        if tableView.contentOffset.y < -effectiveHeight {
             headerRect.origin.y = tableView.contentOffset.y
-            headerRect.size.height = -tableView.contentOffset.y
+            headerRect.size.height = -tableView.contentOffset.y + kTableHeaderCutAway/2
         }
         
         headerView.frame = headerRect
+        
+        let path = UIBezierPath()
+        path.moveToPoint(CGPoint(x: 0, y: 0))
+        path.addLineToPoint(CGPoint(x: headerRect.width, y: 0))
+        path.addLineToPoint(CGPoint(x: headerRect.width, y: headerRect.height))
+        path.addLineToPoint(CGPoint(x: 0, y: headerRect.height-kTableHeaderCutAway))
+        headerMaskLayer?.path = path.CGPath
     }
     
     override func scrollViewDidScroll(scrollView: UIScrollView) {
         updateHeaderView()
     }
 
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        tableView.deselectRowAtIndexPath(indexPath, animated: true)
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
