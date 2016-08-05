@@ -8,8 +8,12 @@
 
 import UIKit
 
+private let kTableHeaderHeight: CGFloat = 300.0
+
 class ViewController: UITableViewController {
 
+    var headerView: UIView!
+    
     let items = [
         NewsItem(category: .World, summary: "Climate change protests, divestments meet fossil fuels realities"),
         NewsItem(category: .Europe, summary: "Scotland's 'Yes' leader says independence vote is 'once in a lifetime'"),
@@ -23,15 +27,32 @@ class ViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        tableView.estimatedRowHeight = 88.0
         //自动调整尺寸
         tableView.rowHeight = UITableViewAutomaticDimension
 
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+        headerView = tableView.tableHeaderView
+        tableView.tableHeaderView = nil
+        
+        tableView.addSubview(headerView)
+        
+        tableView.contentInset = UIEdgeInsets(top: kTableHeaderHeight, left: 0, bottom: 0, right: 0)
+        tableView.contentOffset = CGPoint(x: 0, y: -kTableHeaderHeight)
+        updateHeaderView()
+    }
+    
+    func updateHeaderView() {
+        var headerRect = CGRect(x: 0, y: -kTableHeaderHeight, width: tableView.bounds.width, height: kTableHeaderHeight)
+        if tableView.contentOffset.y < -kTableHeaderHeight {
+            headerRect.origin.y = tableView.contentOffset.y
+            headerRect.size.height = -tableView.contentOffset.y
+        }
+        
+        headerView.frame = headerRect
+    }
+    
+    override func scrollViewDidScroll(scrollView: UIScrollView) {
+        updateHeaderView()
     }
 
     override func didReceiveMemoryWarning() {
