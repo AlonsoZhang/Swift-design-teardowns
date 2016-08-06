@@ -30,7 +30,7 @@ class ViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.estimatedRowHeight = 88.0
-        //自动调整尺寸
+        
         tableView.rowHeight = UITableViewAutomaticDimension
 
         headerView = tableView.tableHeaderView
@@ -54,14 +54,14 @@ class ViewController: UITableViewController {
         updateHeaderView()
     }
     
-    override func viewWillTransitionToSize(size: CGSize, withTransitionCoordinator coordinator: UIViewControllerTransitionCoordinator) {
-        coordinator.animateAlongsideTransition({ (context) -> Void in
-            [self]
-            self.updateHeaderView()
-            self.tableView.reloadData()
-            }, completion: { (context) -> Void in
-        })
-    }
+//    override func viewWillTransitionToSize(size: CGSize, withTransitionCoordinator coordinator: UIViewControllerTransitionCoordinator) {
+//        coordinator.animateAlongsideTransition({ (context) -> Void in
+//            [self]
+//            self.updateHeaderView()
+//            self.tableView.reloadData()
+//            }, completion: { (context) -> Void in
+//        })
+//    }
     
     func updateHeaderView() {
         let effectiveHeight = kTableHeaderHeight-kTableHeaderCutAway/2
