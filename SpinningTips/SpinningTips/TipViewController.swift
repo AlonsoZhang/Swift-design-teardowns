@@ -16,8 +16,11 @@ class TipViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        if let tipView = createTipView() {
+            var center = CGPoint(x: CGRectGetWidth(view.bounds)/2, y: CGRectGetHeight(view.bounds)/2)
+            tipView.center = center
+            view.addSubview(tipView)
+        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -32,15 +35,12 @@ class TipViewController: UIViewController {
         }
         return nil
     }
+}
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+extension UIViewController {
+    func presentTips(tips: [Tip], animated: Bool, completion: (() -> Void)?) {
+        let controller = TipViewController()
+        controller.modalTransitionStyle = .CrossDissolve
+        presentViewController(controller, animated: animated, completion: completion)
     }
-    */
-
 }

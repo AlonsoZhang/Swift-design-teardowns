@@ -7,15 +7,11 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="TipView" customModule="SpinningTips" customModuleProvider="target">
             <connections>
-                <outlet property="imageView" destination="YkY-X4-2eO" id="YT8-ux-kPg"/>
-                <outlet property="pageControl" destination="KUI-aM-SnP" id="5ff-4X-7SF"/>
-                <outlet property="summaryLabel" destination="w0x-PE-MMB" id="Zls-lJ-yf6"/>
-                <outlet property="titleLabel" destination="uCF-33-i0P" id="xPs-zd-0gd"/>
-                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+                <outlet property="imageView" destination="YkY-X4-2eO" id="ruY-mU-jac"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT" customClass="TipView" customModule="SpinningTips" customModuleProvider="target">
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT" customClass="TipView">
             <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
