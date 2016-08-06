@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E24893F61D558A3B0029D91D /* Tip.swift in Sources */ = {isa = PBXBuildFile; fileRef = E24893F51D558A3B0029D91D /* Tip.swift */; };
+		E24893F91D55AA430029D91D /* TipView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E24893F71D55AA430029D91D /* TipView.swift */; };
+		E24893FA1D55AA430029D91D /* TipView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E24893F81D55AA430029D91D /* TipView.xib */; };
+		E24893FC1D55B16D0029D91D /* TipViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E24893FB1D55B16D0029D91D /* TipViewController.swift */; };
 		E25A02B51D556AC7005B9883 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E25A02B41D556AC7005B9883 /* AppDelegate.swift */; };
 		E25A02B71D556AC7005B9883 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E25A02B61D556AC7005B9883 /* ViewController.swift */; };
 		E25A02BA1D556AC7005B9883 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E25A02B81D556AC7005B9883 /* Main.storyboard */; };
@@ -15,6 +19,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		E24893F51D558A3B0029D91D /* Tip.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tip.swift; sourceTree = "<group>"; };
+		E24893F71D55AA430029D91D /* TipView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TipView.swift; sourceTree = "<group>"; };
+		E24893F81D55AA430029D91D /* TipView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TipView.xib; sourceTree = "<group>"; };
+		E24893FB1D55B16D0029D91D /* TipViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TipViewController.swift; sourceTree = "<group>"; };
 		E25A02B11D556AC7005B9883 /* SpinningTips.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SpinningTips.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E25A02B41D556AC7005B9883 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E25A02B61D556AC7005B9883 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -56,6 +64,10 @@
 			children = (
 				E25A02B41D556AC7005B9883 /* AppDelegate.swift */,
 				E25A02B61D556AC7005B9883 /* ViewController.swift */,
+				E24893FB1D55B16D0029D91D /* TipViewController.swift */,
+				E24893F51D558A3B0029D91D /* Tip.swift */,
+				E24893F71D55AA430029D91D /* TipView.swift */,
+				E24893F81D55AA430029D91D /* TipView.xib */,
 				E25A02B81D556AC7005B9883 /* Main.storyboard */,
 				E25A02BB1D556AC7005B9883 /* Assets.xcassets */,
 				E25A02BD1D556AC7005B9883 /* LaunchScreen.storyboard */,
@@ -123,6 +135,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E24893FA1D55AA430029D91D /* TipView.xib in Resources */,
 				E25A02BF1D556AC7005B9883 /* LaunchScreen.storyboard in Resources */,
 				E25A02BC1D556AC7005B9883 /* Assets.xcassets in Resources */,
 				E25A02BA1D556AC7005B9883 /* Main.storyboard in Resources */,
@@ -136,7 +149,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E24893F91D55AA430029D91D /* TipView.swift in Sources */,
+				E24893F61D558A3B0029D91D /* Tip.swift in Sources */,
 				E25A02B71D556AC7005B9883 /* ViewController.swift in Sources */,
+				E24893FC1D55B16D0029D91D /* TipViewController.swift in Sources */,
 				E25A02B51D556AC7005B9883 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -293,6 +309,7 @@
 				E25A02C51D556AC7005B9883 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
