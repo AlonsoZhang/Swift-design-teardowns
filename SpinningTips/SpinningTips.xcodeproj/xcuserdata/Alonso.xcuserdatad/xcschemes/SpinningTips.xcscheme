@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "E25A02B01D556AC7005B9883"
+               BlueprintIdentifier = "E294F49F1D59AFD200B1236B"
                BuildableName = "SpinningTips.app"
                BlueprintName = "SpinningTips"
                ReferencedContainer = "container:SpinningTips.xcodeproj">
@@ -32,7 +32,7 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "E25A02B01D556AC7005B9883"
+            BlueprintIdentifier = "E294F49F1D59AFD200B1236B"
             BuildableName = "SpinningTips.app"
             BlueprintName = "SpinningTips"
             ReferencedContainer = "container:SpinningTips.xcodeproj">
@@ -55,7 +55,7 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "E25A02B01D556AC7005B9883"
+            BlueprintIdentifier = "E294F49F1D59AFD200B1236B"
             BuildableName = "SpinningTips.app"
             BlueprintName = "SpinningTips"
             ReferencedContainer = "container:SpinningTips.xcodeproj">
@@ -74,7 +74,7 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "E25A02B01D556AC7005B9883"
+            BlueprintIdentifier = "E294F49F1D59AFD200B1236B"
             BuildableName = "SpinningTips.app"
             BlueprintName = "SpinningTips"
             ReferencedContainer = "container:SpinningTips.xcodeproj">

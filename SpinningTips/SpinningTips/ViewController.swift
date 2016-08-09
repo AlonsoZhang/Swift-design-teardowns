@@ -2,7 +2,7 @@
 //  ViewController.swift
 //  SpinningTips
 //
-//  Created by Alonso Zhang on 16/8/6.
+//  Created by Alonso Zhang on 16/8/9.
 //  Copyright © 2016年 Alonso Zhang. All rights reserved.
 //
 
@@ -15,13 +15,36 @@ class ViewController: UIViewController {
         // Do any additional setup after loading the view, typically from a nib.
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    func tapTipView() {
+        
+        presentTips([
+            Tip(title: "Tip #1: Don't Blink", summary: "Fastastic shot of Sarah for the ALS Ice Bucket Chanllenge - And yes, she tried her hardest not to blink!", image: UIImage(named: "als-ice-bucket-challenge")),
+            Tip(title: "Tip #2: Explore", summary: "Get out of the house!", image: UIImage(named: "arch-architecture")),
+            Tip(title: "Tip #3: Take in the Moment", summary: "Remember that each moment is unique and will never come again", image: UIImage(named: "man-mountains"))], animated: true, completion: nil)
+    }
+    
+    override func prefersStatusBarHidden() -> Bool {
+        return true
     }
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
-        presentTips([], animated: true, completion: nil)
+        
+        let Tap = UITapGestureRecognizer(target: self, action: #selector(ViewController.tapTipView))
+        
+        self.view.addGestureRecognizer(Tap)
+        //双击才能打开
+        if Tap.numberOfTapsRequired == 2 {
+            tapTipView()
+        }
+        
     }
+    
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
+
+
 }
+
