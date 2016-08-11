@@ -36,24 +36,21 @@
                 <constraint firstItem="wfi-NJ-qYN" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="8" id="0yp-f3-QH8"/>
                 <constraint firstItem="tMn-Wd-NiI" firstAttribute="top" secondItem="wfi-NJ-qYN" secondAttribute="bottom" constant="8" id="1pF-t0-Vnw"/>
                 <constraint firstItem="wfi-NJ-qYN" firstAttribute="top" secondItem="OHh-31-by9" secondAttribute="bottom" constant="8" id="2p8-jg-8SG"/>
-                <constraint firstItem="tMn-Wd-NiI" firstAttribute="top" secondItem="OHh-31-by9" secondAttribute="bottom" constant="8" id="7DD-Xx-XYd"/>
+                <constraint firstItem="OHh-31-by9" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="3Ln-hw-Uyv"/>
+                <constraint firstAttribute="bottom" secondItem="tMn-Wd-NiI" secondAttribute="bottom" constant="45" id="4vm-AP-Xpk"/>
                 <constraint firstAttribute="trailing" secondItem="wfi-NJ-qYN" secondAttribute="trailing" constant="8" id="7pC-kF-ems"/>
                 <constraint firstAttribute="trailing" secondItem="tMn-Wd-NiI" secondAttribute="trailing" constant="8" id="At7-Cq-3zR"/>
+                <constraint firstItem="wfi-NJ-qYN" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="40" id="E0f-uU-V1L"/>
                 <constraint firstItem="gYM-9e-DxJ" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="Fpx-cc-86B"/>
                 <constraint firstItem="OHh-31-by9" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="8" id="GKd-Js-Bsx"/>
                 <constraint firstAttribute="trailing" secondItem="OHh-31-by9" secondAttribute="trailing" constant="8" id="Jof-zl-8ht"/>
+                <constraint firstItem="tMn-Wd-NiI" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="OYo-8P-8a6"/>
                 <constraint firstItem="gYM-9e-DxJ" firstAttribute="top" secondItem="tMn-Wd-NiI" secondAttribute="bottom" constant="8" id="VDz-zr-S4R"/>
                 <constraint firstAttribute="bottom" secondItem="gYM-9e-DxJ" secondAttribute="bottom" id="YQo-4n-2Yx"/>
-                <constraint firstItem="gYM-9e-DxJ" firstAttribute="top" secondItem="wfi-NJ-qYN" secondAttribute="bottom" constant="8" id="Ysm-qh-S98"/>
                 <constraint firstItem="tMn-Wd-NiI" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="8" id="j3m-Z5-otg"/>
+                <constraint firstItem="wfi-NJ-qYN" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="j6Q-vK-Rci"/>
                 <constraint firstItem="OHh-31-by9" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="8" id="od8-U9-CxD"/>
             </constraints>
-            <variation key="default">
-                <mask key="constraints">
-                    <exclude reference="7DD-Xx-XYd"/>
-                    <exclude reference="Ysm-qh-S98"/>
-                </mask>
-            </variation>
             <connections>
                 <outlet property="imageView" destination="wfi-NJ-qYN" id="xB0-Cx-OmN"/>
                 <outlet property="pageControl" destination="gYM-9e-DxJ" id="SXA-Ag-o0t"/>
