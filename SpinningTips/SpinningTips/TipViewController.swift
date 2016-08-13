@@ -8,7 +8,7 @@
 
 import UIKit
 
-//private let kTipViewOffset: CGFloat = 500
+private let kTipViewOffset: CGFloat = 500
 private let kTipViewHeight: CGFloat = 400
 private let kTipViewWidth: CGFloat = 300
 
@@ -21,7 +21,7 @@ class TipViewViewController: UIViewController {
     var animator: UIDynamicAnimator!
     var attachmentBehavior: UIAttachmentBehavior!
     var snapBehavior: UISnapBehavior!
-    var panBehavior: UIAttachmentBehavior!
+    //var panBehavior: UIAttachmentBehavior!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,8 +39,7 @@ class TipViewViewController: UIViewController {
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
-        //setupAnimator()
-        presentTips([], animated: true, completion: nil)
+        setupAnimator()
     }
     
     override func didReceiveMemoryWarning() {
@@ -48,38 +47,38 @@ class TipViewViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-//    enum TipViewPosition: Int {
-//        case Default
-//        case RotatedLeft
-//        case RotatedRight
-//        
-//        func viewCenter(center: CGPoint) -> CGPoint {
-//            var center = center
-//            switch self {
-//            case .RotatedLeft:
-//                center.y += kTipViewOffset
-//                center.x -= kTipViewOffset
-//            case .RotatedRight:
-//                center.y += kTipViewOffset
-//                center.x += kTipViewOffset
-//            default:
-//                ()
-//            }
-//            return center
-//        }
-//        func viewTransform() -> CGAffineTransform {
-//            switch self {
-//            case .RotatedLeft:
-//                return CGAffineTransformMakeRotation(CGFloat(-M_PI_2))
-//                
-//            case .RotatedRight:
-//                return CGAffineTransformMakeRotation(CGFloat(M_PI_2))
-//                
-//            default:
-//                return CGAffineTransformIdentity
-//            }
-//        }
-//    }
+    enum TipViewPosition: Int {
+        case Default
+        case RotatedLeft
+        case RotatedRight
+        
+        func viewCenter(center: CGPoint) -> CGPoint {
+            var center = center
+            switch self {
+            case .RotatedLeft:
+                center.y += kTipViewOffset
+                center.x -= kTipViewOffset
+            case .RotatedRight:
+                center.y += kTipViewOffset
+                center.x += kTipViewOffset
+            default:
+                ()
+            }
+            return center
+        }
+        func viewTransform() -> CGAffineTransform {
+            switch self {
+            case .RotatedLeft:
+                return CGAffineTransformMakeRotation(CGFloat(-M_PI_2))
+                
+            case .RotatedRight:
+                return CGAffineTransformMakeRotation(CGFloat(M_PI_2))
+                
+            default:
+                return CGAffineTransformIdentity
+            }
+        }
+    }
     
     func createTipView() -> TipView? {
         
@@ -92,41 +91,41 @@ class TipViewViewController: UIViewController {
         return nil
     }
     
-//    func updateTipView(tipView: UIView, position: TipViewPosition) {
-//        let center = CGPoint(x: CGRectGetWidth(view.bounds)/2, y: CGRectGetHeight(view.bounds)/2)
-//        tipView.center = position.viewCenter(center)
-//        tipView.transform = position.viewTransform()
-//    }
+    func updateTipView(tipView: UIView, position: TipViewPosition) {
+        let center = CGPoint(x: CGRectGetWidth(view.bounds)/2, y: CGRectGetHeight(view.bounds)/2)
+        tipView.center = position.viewCenter(center)
+        tipView.transform = position.viewTransform()
+    }
     
-//    func resetTipView(tipView: UIView, position: TipViewPosition) {
-//        animator.removeAllBehaviors()
-//        
-//        updateTipView(tipView, position: position)
-//        animator.updateItemUsingCurrentState(tipView)
-//        
-//        animator.addBehavior(attachmentBehavior)
-//        animator.addBehavior(snapBehavior)
-//    }
+    func resetTipView(tipView: UIView, position: TipViewPosition) {
+        animator.removeAllBehaviors()
+        
+        updateTipView(tipView, position: position)
+        animator.updateItemUsingCurrentState(tipView)
+        
+        animator.addBehavior(attachmentBehavior)
+        animator.addBehavior(snapBehavior)
+    }
     
-//    func setupAnimator() {
-//        animator = UIDynamicAnimator(referenceView: view)
-//        
-//        var center = CGPoint(x: CGRectGetWidth(view.bounds)/2, y: CGRectGetHeight(view.bounds)/2)
-//        
-//        tipView = createTipView()
-//        view.addSubview(tipView)
-//        snapBehavior = UISnapBehavior(item: tipView, snapToPoint: center)
-//        
-//        center.y += kTipViewOffset
-//        attachmentBehavior = UIAttachmentBehavior(item: tipView, offsetFromCenter: UIOffset(horizontal: 0, vertical: kTipViewOffset), attachedToAnchor: center)
-//        
-//        setupTipView(tipView, index: 0)
-//        resetTipView(tipView, position: .RotatedRight)
-//        
-//        let pan = UIPanGestureRecognizer(target: self, action: #selector(TipViewViewController.panTipView(_:)))
-//        view.addGestureRecognizer(pan)
-//        
-//    }
+    func setupAnimator() {
+        animator = UIDynamicAnimator(referenceView: view)
+        
+        var center = CGPoint(x: CGRectGetWidth(view.bounds)/2, y: CGRectGetHeight(view.bounds)/2)
+        
+        tipView = createTipView()
+        view.addSubview(tipView)
+        snapBehavior = UISnapBehavior(item: tipView, snapToPoint: center)
+        
+        center.y += kTipViewOffset
+        attachmentBehavior = UIAttachmentBehavior(item: tipView, offsetFromCenter: UIOffset(horizontal: 0, vertical: kTipViewOffset), attachedToAnchor: center)
+        
+        //setupTipView(tipView, index: 0)
+        resetTipView(tipView, position: .RotatedRight)
+        
+        //let pan = UIPanGestureRecognizer(target: self, action: #selector(TipViewViewController.panTipView(_:)))
+        //view.addGestureRecognizer(pan)
+        
+    }
     
 //    func panTipView(pan: UIPanGestureRecognizer) {
 //        let location = pan.locationInView(view)
