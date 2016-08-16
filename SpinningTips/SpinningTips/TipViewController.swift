@@ -21,19 +21,12 @@ class TipViewViewController: UIViewController {
     var animator: UIDynamicAnimator!
     var attachmentBehavior: UIAttachmentBehavior!
     var snapBehavior: UISnapBehavior!
-    //var panBehavior: UIAttachmentBehavior!
+    var panBehavior: UIAttachmentBehavior!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         //设为白色则不会使界面全黑
-        //self.view.backgroundColor = UIColor(white: 1, alpha: 0.6)
-        
-        
-        if let tipView = createTipView() {
-            var center = CGPoint(x: CGRectGetWidth(view.bounds)/2, y: CGRectGetHeight(view.bounds)/2)
-            tipView.center = center
-            view.addSubview(tipView)
-        }
+        self.view.backgroundColor = UIColor(white: 1, alpha: 0.6)
         
     }
     
@@ -119,90 +112,90 @@ class TipViewViewController: UIViewController {
         center.y += kTipViewOffset
         attachmentBehavior = UIAttachmentBehavior(item: tipView, offsetFromCenter: UIOffset(horizontal: 0, vertical: kTipViewOffset), attachedToAnchor: center)
         
-        //setupTipView(tipView, index: 0)
+        setupTipView(tipView, index: 0)
         resetTipView(tipView, position: .RotatedRight)
         
-        //let pan = UIPanGestureRecognizer(target: self, action: #selector(TipViewViewController.panTipView(_:)))
-        //view.addGestureRecognizer(pan)
+        let pan = UIPanGestureRecognizer(target: self, action: #selector(TipViewViewController.panTipView(_:)))
+        view.addGestureRecognizer(pan)
         
     }
     
-//    func panTipView(pan: UIPanGestureRecognizer) {
-//        let location = pan.locationInView(view)
-//        
-//        switch pan.state {
-//        case .Began:
-//            animator.removeBehavior(snapBehavior)
-//            panBehavior = UIAttachmentBehavior(item: tipView, attachedToAnchor: location)
-//            animator.addBehavior(panBehavior)
-//            
-//        case .Changed:
-//            panBehavior.anchorPoint = location
-//            
-//        case .Ended:
-//            fallthrough
-//        case .Cancelled:
-//            let center = CGPoint(x: CGRectGetWidth(view.bounds)/2, y: CGRectGetHeight(view.bounds)/2)
-//            let offset = location.x - center.x
-//            if fabs(offset) < 100 {
-//                animator.removeBehavior(panBehavior)
-//                animator.addBehavior(snapBehavior)
-//            }else{
-//                
-//                var nextIndex = self.index
-//                var position = TipViewPosition.RotatedRight
-//                var nextPosition = TipViewPosition.RotatedLeft
-//                
-//                if offset > 0 {
-//                    nextIndex -= 1
-//                    nextPosition = .RotatedLeft
-//                    position = .RotatedRight
-//                }else{
-//                    nextIndex += 1
-//                    nextPosition = .RotatedRight
-//                    position = .RotatedLeft
-//                }
-//                
-//                if nextIndex < 0 {
-//                    nextIndex = 0
-//                    nextPosition = .RotatedRight
-//                }
-//                
-//                //                let position = offset > 0 ? TipViewPosition.RotatedRight : TipViewPosition.RotatedLeft
-//                //                let nextPosition = offset > 0 ? TipViewPosition.RotatedLeft : TipViewPosition.RotatedRight
-//                let duration = 0.4
-//                
-//                let center = CGPoint(x: CGRectGetWidth(view.bounds)/2, y: CGRectGetHeight(view.bounds)/2)
-//                
-//                panBehavior.anchorPoint = position.viewCenter(center)
-//                dispatch_after(dispatch_time(DISPATCH_TIME_NOW, Int64(duration * Double(NSEC_PER_SEC))), dispatch_get_main_queue()) {
-//                    [self]
-//                    if nextIndex >= self.tips.count {
-//                        self.dismissViewControllerAnimated(true, completion: nil)
-//                    }else{
-//                        self.index = nextIndex
-//                        self.setupTipView(self.tipView, index: nextIndex)
-//                        self.resetTipView(self.tipView, position: nextPosition)
-//                    }
-//                }
-//            }
-//        default:
-//            ()
-//        }
-//    }
+    func panTipView(pan: UIPanGestureRecognizer) {
+        let location = pan.locationInView(view)
+        
+        switch pan.state {
+        case .Began:
+            animator.removeBehavior(snapBehavior)
+            panBehavior = UIAttachmentBehavior(item: tipView, attachedToAnchor: location)
+            animator.addBehavior(panBehavior)
+            
+        case .Changed:
+            panBehavior.anchorPoint = location
+            
+        case .Ended:
+            fallthrough
+        case .Cancelled:
+            let center = CGPoint(x: CGRectGetWidth(view.bounds)/2, y: CGRectGetHeight(view.bounds)/2)
+            let offset = location.x - center.x
+            if fabs(offset) < 100 {
+                animator.removeBehavior(panBehavior)
+                animator.addBehavior(snapBehavior)
+            }else{
+                
+                var nextIndex = self.index
+                var position = TipViewPosition.RotatedRight
+                var nextPosition = TipViewPosition.RotatedLeft
+                
+                if offset > 0 {
+                    nextIndex -= 1
+                    nextPosition = .RotatedLeft
+                    position = .RotatedRight
+                }else{
+                    nextIndex += 1
+                    nextPosition = .RotatedRight
+                    position = .RotatedLeft
+                }
+                
+                if nextIndex < 0 {
+                    nextIndex = 0
+                    nextPosition = .RotatedRight
+                }
+                
+                //                let position = offset > 0 ? TipViewPosition.RotatedRight : TipViewPosition.RotatedLeft
+                //                let nextPosition = offset > 0 ? TipViewPosition.RotatedLeft : TipViewPosition.RotatedRight
+                let duration = 0.4
+                
+                let center = CGPoint(x: CGRectGetWidth(view.bounds)/2, y: CGRectGetHeight(view.bounds)/2)
+                
+                panBehavior.anchorPoint = position.viewCenter(center)
+                dispatch_after(dispatch_time(DISPATCH_TIME_NOW, Int64(duration * Double(NSEC_PER_SEC))), dispatch_get_main_queue()) {
+                    [self]
+                    if nextIndex >= self.tips.count {
+                        self.dismissViewControllerAnimated(true, completion: nil)
+                    }else{
+                        self.index = nextIndex
+                        self.setupTipView(self.tipView, index: nextIndex)
+                        self.resetTipView(self.tipView, position: nextPosition)
+                    }
+                }
+            }
+        default:
+            ()
+        }
+    }
     
-//    func setupTipView(tipView: TipView, index: Int) {
-//        if index < tips.count {
-//            let tip = tips[index]
-//            tipView.tip = tip
-//            
-//            
-//            tipView.pageControl.numberOfPages = tips.count
-//            tipView.pageControl.currentPage = index
-//        }else{
-//            tipView.tip = nil
-//        }
-//    }
+    func setupTipView(tipView: TipView, index: Int) {
+        if index < tips.count {
+            let tip = tips[index]
+            tipView.tip = tip
+            
+            
+            tipView.pageControl.numberOfPages = tips.count
+            tipView.pageControl.currentPage = index
+        }else{
+            tipView.tip = nil
+        }
+    }
     
 }
 
